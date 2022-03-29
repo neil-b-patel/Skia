@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - CanBePickedUp
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -12,9 +11,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Consumables
-  - Ground
-  - Character
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -39,6 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Map
+    uniqueID: 3482723991
+    locked: 0
+  - name: Terrain
+    uniqueID: 2831887299
+    locked: 0
+  - name: Characters
+    uniqueID: 1894819821
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

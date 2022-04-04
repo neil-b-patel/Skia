@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: ff5f85d99830f9549a070706e41af2d4
   - enabled: 1
-    path: Assets/Scenes/Lvl 1.unity
+    path: Assets/Scenes/Level01.unity
     guid: d30fbee988f498842a6e22beea9f1786
   - enabled: 1
     path: Assets/Scenes/Platformer.unity

@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class LightPlayerController : MonoBehaviour
 {
-    // PLAYER DATA => SHOULD ALL EVENTUALLY BE INHERITED FROM `PlayerData` SCRIPT
-    //private PlayerData data;
-    private int numFeet = 0;
 
     // RUN VARS
     private float moveInput;
@@ -25,6 +22,7 @@ public class LightPlayerController : MonoBehaviour
     private int numJumps = 0;
 
     // UNITY VARS
+    private PlayerData playerData;
     private Rigidbody rb;
     private Collider col;
     private LayerMask groundLayer;
@@ -33,6 +31,7 @@ public class LightPlayerController : MonoBehaviour
     void Start()
     {
         // LOAD UNITY VARS
+        playerData = FindObjectOfType<PlayerData>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         groundLayer = LayerMask.GetMask("Ground");
@@ -183,7 +182,7 @@ public class LightPlayerController : MonoBehaviour
 
     bool CanJump()
     {
-        return (numFeet > 0) && (lastGroundedTime > 0);
+        return (playerData.getNumFeet() > 0) && (lastGroundedTime > 0);
     }
 
     bool CanJumpCut()
@@ -193,7 +192,7 @@ public class LightPlayerController : MonoBehaviour
 
     bool CanDoubleJump()
     {
-        return (numFeet > 1) && (numJumps < 2);
+        return (playerData.getNumFeet() > 1) && (numJumps < 2);
     }
     #endregion CHECKS
 
@@ -202,9 +201,9 @@ public class LightPlayerController : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("CanBePickedUp"))
         {
-            numFeet += 1;
+            playerData.setNumFeet(playerData.getNumFeet() + 1);
             Debug.Log("Gained a Foot!");
-            if (numFeet == 1)
+            if (playerData.getNumFeet() == 1)
             {
                 Debug.Log("Try jumping with Space!");
             }

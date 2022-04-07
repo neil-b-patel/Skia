@@ -5,8 +5,8 @@ using UnityEngine;
 public class ShadowBehavior : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 1500f;
-    [SerializeField] float jumpVelocity = 250f;
-    [SerializeField] float gravityScale = 10f;
+    //[SerializeField] float jumpVelocity = 250f;
+    //[SerializeField] float gravityScale = 10f;
 
     //private float vInput;
     //private float hInput;

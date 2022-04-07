@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - CanBePickedUp
+  - Foot
+  - Eye
   layers:
   - Default
   - TransparentFX

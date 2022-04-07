@@ -154,7 +154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &130270338
 MonoBehaviour:
@@ -243,6 +243,50 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 564377271}
   m_Enabled: 1
+--- !u!1 &763571920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 763571922}
+  - component: {fileID: 763571921}
+  m_Layer: 0
+  m_Name: ProgressManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &763571921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763571920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5714f4c48a4a5e1449da139d21860413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &763571922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763571920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104664811
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +316,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd27bb9dbaa4924481133d1ccb99a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numFeet: 0
+  numEyes: 0
+  position: []
+  items: []
 --- !u!4 &1104664813
 Transform:
   m_ObjectHideFlags: 0
@@ -285,5 +333,80 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2036531808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2036531810}
+  - component: {fileID: 2036531809}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2036531809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036531808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 207f211a735a5ce4c828e346ca45ca5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: TitleScreen
+    clip: {fileID: 8300000, guid: 5118054ce0a095245b23a7263a7b5782, type: 3}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Dark
+    clip: {fileID: 8300000, guid: f7552ad3245754749a3df14a8bf89fda, type: 3}
+    volume: 0.15
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: Spooky
+    clip: {fileID: 8300000, guid: fe1ea9df23a06464b80d9556a6167356, type: 3}
+    volume: 0.15
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: Arabian
+    clip: {fileID: 8300000, guid: 60c8c11bf4e3cdb4bb83ca5e0e921e3d, type: 3}
+    volume: 0.15
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+  - name: Journey
+    clip: {fileID: 8300000, guid: 5118054ce0a095245b23a7263a7b5782, type: 3}
+    volume: 0.15
+    pitch: 0.5
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &2036531810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036531808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

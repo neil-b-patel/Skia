@@ -1,23 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 
 public class FadeZoomEffect : MonoBehaviour
 {
-    public GameObject blackOutSquare;
-    public CinemachineVirtualCamera vcam;
-    public GameObject player;
+    bool fadeToBlack = true;
+    float fadeSpeed = 0.35f;
+    float lensAdjust = 0.35f;
+
+    private CinemachineVirtualCamera vcam;
     private Rigidbody rb;
 
-    // Start is called before the first frame update
     void Start()
-    {   
-        StartCoroutine(FadeAndZoom());
+    {
+        vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        rb = GameObject.Find("Light Player").GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {   
         // plan on changing the key dow to mouse click or etner for starting the game
@@ -26,27 +26,48 @@ public class FadeZoomEffect : MonoBehaviour
 
     //notes: have camera follow turned off at start, but when player presses play, it will turn on the follow machine to create the zoom affect
 
-    public IEnumerator FadeAndZoom(bool fadeToBlack = true, float fadeSpeed = .3f, float lensAdjust = 1f)
+    public void PlayerWakeUp()
     {
-        Color objectColor = blackOutSquare.GetComponent<Image>().color;
+        StartCoroutine(FadeAndZoom());
+    }
+
+    public IEnumerator FadeAndZoom()
+    {
+
+        Color objectColor = GetComponent<Image>().color;
         float fadeAmount;
-        rb = player.GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY |RigidbodyConstraints.FreezePositionZ;
-        if(fadeToBlack)
+        
+        rb.constraints = RigidbodyConstraints.FreezePositionX | 
+                         RigidbodyConstraints.FreezePositionY |
+                         RigidbodyConstraints.FreezePositionZ;
+        
+        if (fadeToBlack)
         {
-            while (blackOutSquare.GetComponent<Image>().color.a > 0)
+            while (GetComponent<Image>().color.a > 0)
             {
-                Debug.Log("fading!!");
+                Debug.Log("FADING FROM BLACK!");
+                
                 fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-                if(vcam.m_Lens.OrthographicSize > 5) {
+               
+                if (vcam.m_Lens.OrthographicSize > 5) 
+                {
                     vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - (lensAdjust * Time.deltaTime);
                 }
+                
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-                blackOutSquare.GetComponent<Image>().color = objectColor;
+                
+                GetComponent<Image>().color = objectColor;
+                
                 yield return null;
             }
-            Debug.Log("Done");
+            
+            Debug.Log("FADING DONE");
+            
             rb.constraints = RigidbodyConstraints.None;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ |
+                             RigidbodyConstraints.FreezeRotationZ;
+
+
             yield break;
         }
     }

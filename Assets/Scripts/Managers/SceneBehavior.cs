@@ -32,6 +32,8 @@ public class SceneBehavior : MonoBehaviour
     {
         if (!onTitle && Input.GetKeyDown(KeyCode.Escape) && !menuLoaded)
         {
+            Time.timeScale = 0;
+            
             SceneManager.LoadScene((int)Scenes.Menu, LoadSceneMode.Additive);
            
             menuLoaded = true; 
@@ -47,6 +49,8 @@ public class SceneBehavior : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.Escape) || unpauseBtnPressed) && menuLoaded)
         {
+            Time.timeScale = 1;
+
             SceneManager.UnloadSceneAsync((int)Scenes.Menu);
             
             menuLoaded = false;

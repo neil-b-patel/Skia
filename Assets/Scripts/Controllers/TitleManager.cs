@@ -7,12 +7,14 @@ public class TitleManager : MonoBehaviour
     SceneBehavior sceneBehavior;
     PlayerData playerData;
     ProgressManager progressManager;
+    FadeZoomEffect fadeZoomEffect;
 
     void Start()
     {
         sceneBehavior = FindObjectOfType<SceneBehavior>();
         playerData = FindObjectOfType<PlayerData>();
         progressManager = FindObjectOfType<ProgressManager>();
+        fadeZoomEffect = FindObjectOfType<FadeZoomEffect>();
     }
 
     void Update()

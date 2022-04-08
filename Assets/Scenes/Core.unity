@@ -319,6 +319,7 @@ MonoBehaviour:
   numFeet: 0
   numEyes: 0
   position: []
+  numItems: 0
   items: []
 --- !u!4 &1104664813
 Transform:

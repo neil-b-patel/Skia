@@ -87,6 +87,7 @@ public class PlayerManager : MonoBehaviour
 
             AddItem(item.name);
             SetPosition(transform.position);
+            
             progressManager.SetMusic();
 
             Destroy(item.gameObject);

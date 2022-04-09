@@ -6,8 +6,6 @@ using Cinemachine;
 public class FadeZoomEffect : MonoBehaviour
 {
     bool fadeToBlack = true;
-    float fadeSpeed = 0.35f;
-    float lensAdjust = 0.35f;
 
     private CinemachineVirtualCamera vcam;
     private Rigidbody rb;
@@ -20,7 +18,6 @@ public class FadeZoomEffect : MonoBehaviour
 
     void Update()
     {   
-        // plan on changing the key dow to mouse click or etner for starting the game
             
     }
 
@@ -31,7 +28,7 @@ public class FadeZoomEffect : MonoBehaviour
         StartCoroutine(FadeAndZoom());
     }
 
-    public IEnumerator FadeAndZoom()
+    public IEnumerator FadeAndZoom(float fadeSpeed = 0.01f, float lensAdjust = 0.35f)
     {
 
         Color objectColor = GetComponent<Image>().color;
@@ -43,13 +40,22 @@ public class FadeZoomEffect : MonoBehaviour
         
         if (fadeToBlack)
         {
-            while (GetComponent<Image>().color.a > 0)
+            while (objectColor.a > 0)
             {
                 Debug.Log("FADING FROM BLACK!");
-                
+                if(objectColor.a < 80) {
+                    fadeSpeed = 0.10f; 
+                }
+
+                if(objectColor.a < 100) {
+                    lensAdjust = .80f;
+                }
+
+                Debug.Log(fadeSpeed);
+
                 fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-               
-                if (vcam.m_Lens.OrthographicSize > 5) 
+
+                if (vcam.m_Lens.OrthographicSize > 6) 
                 {
                     vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - (lensAdjust * Time.deltaTime);
                 }
@@ -57,7 +63,8 @@ public class FadeZoomEffect : MonoBehaviour
                 objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
                 
                 GetComponent<Image>().color = objectColor;
-                
+
+                Debug.Log(lensAdjust);
                 yield return null;
             }
             

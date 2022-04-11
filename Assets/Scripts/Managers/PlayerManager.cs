@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviour
             {
                 case "Feet":
                     SetNumFeet(GetNumFeet() + 1);
+
                     break;
                 case "Eyes":
                     SetNumEyes(GetNumEyes() + 1);
@@ -91,6 +92,8 @@ public class PlayerManager : MonoBehaviour
             progressManager.SetMusic();
 
             Destroy(item.gameObject);
+
+            progressManager.EvolvePlayer();
         }
     }
 

@@ -5,26 +5,34 @@ using UnityEngine;
 public class LightPlayerEvolution : MonoBehaviour
 {   
     private PlayerManager player;
+    private SpriteRenderer spriteRenderer;
+    private SphereCollider sphereCollider;
     public Sprite oneLeg;
     public Sprite twoLeg;
-    private SpriteRenderer lightPlayer;
 
-    // Start is called before the first frame update
     void Start()
     {   
         player = FindObjectOfType<PlayerManager>();
-        lightPlayer = GameObject.Find("Light Player").GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        sphereCollider = GetComponent<SphereCollider>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {   
-        if(player.GetNumFeet() == 1) {
-            lightPlayer.sprite = oneLeg;
+    public void EvolvePlayer()
+    {
+        if (player.GetNumFeet() == 1)
+        {
+            spriteRenderer.sprite = oneLeg;
         }
 
-        if(player.GetNumFeet() == 2) {
-            lightPlayer.sprite = twoLeg;
+        if (player.GetNumFeet() == 2)
+        {
+            spriteRenderer.sprite = twoLeg;
+        }
+
+        if (player.GetNumFeet() > 1)
+        {
+            sphereCollider.radius = 9.75f;
+            sphereCollider.center = new Vector3(0f, 0f, 0f);
         }
     }
 }

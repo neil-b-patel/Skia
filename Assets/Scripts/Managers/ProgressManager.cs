@@ -7,6 +7,7 @@ public class ProgressManager : MonoBehaviour
 {
     private PlayerData playerData;
     private FadeZoomEffect fadeZoomEffect;
+    private LightPlayerEvolution lightPlayerEvolution;
 
     void Awake()
     {
@@ -16,9 +17,11 @@ public class ProgressManager : MonoBehaviour
     public void CheckProgress()
     {
         fadeZoomEffect = FindObjectOfType<FadeZoomEffect>();
+        lightPlayerEvolution = FindObjectOfType<LightPlayerEvolution>();
 
         SetMusic();
         WakeUpPlayer();
+        EvolvePlayer();
 
         if (playerData.items.Count > 0)
         {
@@ -69,14 +72,27 @@ public class ProgressManager : MonoBehaviour
 
     void WakeUpPlayer()
     {
-        if (playerData.items.Count == 0)
+        try
         {
-            fadeZoomEffect.PlayerWakeUp();
+            if (playerData.items.Count == 0)
+            {
+                fadeZoomEffect.PlayerWakeUp();
+            }
+            else
+            {
+                fadeZoomEffect.gameObject.SetActive(false);
+            }
         }
-        else
+        catch
         {
-            fadeZoomEffect.gameObject.SetActive(false);
+            Debug.LogWarning("COULD NOT WAKE UP PLAYER");
         }
+            
+    }
+
+    public void EvolvePlayer()
+    {
+        lightPlayerEvolution.EvolvePlayer();
     }
 
 }

@@ -5,6 +5,9 @@ using Cinemachine;
 
 public class FadeZoomEffect : MonoBehaviour
 {
+    int startCamZoom = 13;
+    float fadeSpeed = 0.01f;
+    float lensAdjust = 0.35f;
     bool fadeToBlack = true;
 
     private CinemachineVirtualCamera vcam;
@@ -28,11 +31,13 @@ public class FadeZoomEffect : MonoBehaviour
         StartCoroutine(FadeAndZoom());
     }
 
-    public IEnumerator FadeAndZoom(float fadeSpeed = 0.01f, float lensAdjust = 0.35f)
+    public IEnumerator FadeAndZoom()
     {
 
         Color objectColor = GetComponent<Image>().color;
         float fadeAmount;
+
+        vcam.m_Lens.OrthographicSize = startCamZoom;
         
         rb.constraints = RigidbodyConstraints.FreezePositionX | 
                          RigidbodyConstraints.FreezePositionY |
@@ -42,7 +47,6 @@ public class FadeZoomEffect : MonoBehaviour
         {
             while (objectColor.a > 0)
             {
-                Debug.Log("FADING FROM BLACK!");
                 if(objectColor.a < 80) {
                     fadeSpeed = 0.10f; 
                 }

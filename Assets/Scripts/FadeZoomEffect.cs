@@ -19,12 +19,9 @@ public class FadeZoomEffect : MonoBehaviour
         rb = GameObject.Find("Light Player").GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {   
-            
-    }
-
-    //notes: have camera follow turned off at start, but when player presses play, it will turn on the follow machine to create the zoom affect
+    //notes: have camera follow turned off at start,
+    //       but when player presses play,
+    //       it will turn on the follow machine to create the zoom effect
 
     public void PlayerWakeUp()
     {
@@ -55,8 +52,6 @@ public class FadeZoomEffect : MonoBehaviour
                     lensAdjust = .80f;
                 }
 
-                Debug.Log(fadeSpeed);
-
                 fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
 
                 if (vcam.m_Lens.OrthographicSize > 6) 
@@ -68,7 +63,6 @@ public class FadeZoomEffect : MonoBehaviour
                 
                 GetComponent<Image>().color = objectColor;
 
-                Debug.Log(lensAdjust);
                 yield return null;
             }
             

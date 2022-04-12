@@ -94,5 +94,4 @@ public class ProgressManager : MonoBehaviour
     {
         lightPlayerEvolution.EvolvePlayer();
     }
-
 }

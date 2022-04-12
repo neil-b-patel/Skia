@@ -14,6 +14,7 @@ public class FadeZoomEffect : MonoBehaviour
     private Rigidbody rb;
 
     public Animator animator;
+
     void Start()
     {
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();

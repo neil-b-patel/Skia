@@ -22,9 +22,9 @@ public class LightPlayerController : MonoBehaviour
     #region RUN VARS
     private float moveInput;
     private float jumpInput;
-    private float moveSpeed = 14.5f;
-    private float acceleration = 13f;
-    private float decceleration = 16f;
+    private float moveSpeed = 25f;
+    private float acceleration = 20f;
+    private float decceleration = 25f;
     private float velocityPower = 0.9f;
     private float defaultFriction = 0.2f;
     private bool isFacingRight = true;
@@ -32,8 +32,8 @@ public class LightPlayerController : MonoBehaviour
 
 
     #region JUMP VARS
-    private float jumpForce = 16f;
-    private float jumpCutMultiplier = 0.6f;
+    private float jumpForce = 30f;
+    private float jumpCutMultiplier = 0.5f;
     private float jumpCoyoteTime = 0.15f;
     private float jumpBufferTime = 0.1f;
     private float lastGroundedTime = 0f;

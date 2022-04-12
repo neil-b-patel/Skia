@@ -5,9 +5,9 @@ using Cinemachine;
 
 public class FadeZoomEffect : MonoBehaviour
 {
-    int startCamZoom = 13;
-    float fadeSpeed = 0.01f;
-    float lensAdjust = 0.35f;
+    int startCamZoom = 11;
+    float fadeSpeed = 0.1f;
+    float lensAdjust = 0.45f;
     bool fadeToBlack = true;
 
     private CinemachineVirtualCamera vcam;
@@ -48,10 +48,10 @@ public class FadeZoomEffect : MonoBehaviour
         animator.enabled = false;
         if (fadeToBlack)
         {
-            while (objectColor.a > 0)
+            while (objectColor.a > 0 && vcam.m_Lens.OrthographicSize != 6)
             {
                 if(objectColor.a < 80) {
-                    fadeSpeed = 0.10f; 
+                    fadeSpeed = 0.15f; 
                 }
 
                 if(objectColor.a < 100) {

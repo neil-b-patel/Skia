@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ProgressManager : MonoBehaviour
 {
     private PlayerData playerData;
-    private FadeZoomEffect fadeZoomEffect;
+    //private FadeZoomEffect fadeZoomEffect;
 
     void Awake()
     {
@@ -15,10 +15,10 @@ public class ProgressManager : MonoBehaviour
 
     public void CheckProgress()
     {
-        fadeZoomEffect = FindObjectOfType<FadeZoomEffect>();
+        //fadeZoomEffect = FindObjectOfType<FadeZoomEffect>();
 
         SetMusic();
-        WakeUpPlayer();
+        //WakeUpPlayer();
 
         if (playerData.items.Count > 0)
         {
@@ -67,16 +67,16 @@ public class ProgressManager : MonoBehaviour
         }
     }
 
-    void WakeUpPlayer()
-    {
-        if (playerData.items.Count == 0)
-        {
-            fadeZoomEffect.PlayerWakeUp();
-        }
-        else
-        {
-            fadeZoomEffect.gameObject.SetActive(false);
-        }
-    }
+    // void WakeUpPlayer()
+    // {
+    //     if (playerData.items.Count == 0)
+    //     {
+    //         fadeZoomEffect.PlayerWakeUp();
+    //     }
+    //     else
+    //     {
+    //         fadeZoomEffect.gameObject.SetActive(false);
+    //     }
+    // }
 
 }

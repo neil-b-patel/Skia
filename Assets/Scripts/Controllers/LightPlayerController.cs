@@ -2,9 +2,26 @@ using UnityEngine;
 
 public class LightPlayerController : MonoBehaviour
 {
+    #region ANIMATION STATES
+    Animator animator;
+    string animationState = "AnimationState";
+    enum CharStates 
+    {   
+        noLegIdle = 1,
+        rolling = 2,
+        oneLegIdle = 3,
+        oneLegHop = 4,
+        twoLegIdle = 5,
+        twoLegWalk = 6,
+        twoLegHop = 7,
+        twoLegCrouch = 8
+    }
+
+    #endregion
 
     #region RUN VARS
     private float moveInput;
+    private float jumpInput;
     private float moveSpeed = 14.5f;
     private float acceleration = 13f;
     private float decceleration = 16f;
@@ -38,6 +55,7 @@ public class LightPlayerController : MonoBehaviour
     void Start()
     {
         #region LOAD UNITY VARS
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerManager>();
         progressManager = FindObjectOfType<ProgressManager>();
         rb = GetComponent<Rigidbody>();
@@ -52,6 +70,7 @@ public class LightPlayerController : MonoBehaviour
     {
         #region INPUT CHECKS
         moveInput = Input.GetAxisRaw("Horizontal");
+        jumpInput = Input.GetAxisRaw("Vertical");
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             OnJump();
@@ -85,6 +104,10 @@ public class LightPlayerController : MonoBehaviour
         {
             OnJumpUp();
         }
+        #endregion
+
+        #region UPDATE ANIMATION STATE
+        UpdateState();
         #endregion
     }
 
@@ -175,6 +198,39 @@ public class LightPlayerController : MonoBehaviour
         rb.AddForce(Vector3.down * rb.velocity.y * (1 - jumpCutMultiplier), ForceMode.Impulse);
     }
 
+    // UPDATE STATE FOR LIGHT CHARACTER CONTROLLER
+    private void UpdateState()
+    {
+        if(CanJump() == false && CanDoubleJump() == false) {
+            if (moveInput > 0 || moveInput < 0) {
+                animator.SetInteger(animationState, (int)CharStates.rolling);
+            } else {
+                animator.SetInteger(animationState, (int)CharStates.noLegIdle);
+            }
+        } else if (CanJump() == true && CanDoubleJump() == false) {
+            // need to add crouch
+            if (moveInput > 0 || moveInput < 0) {
+                // replace animation
+                animator.SetInteger(animationState, (int)CharStates.oneLegHop);
+            } else if (jumpInput > 0) {
+                animator.SetInteger(animationState, (int)CharStates.oneLegHop); 
+            } else {
+                animator.SetInteger(animationState, (int)CharStates.oneLegIdle);
+            }
+        } else {
+            if (moveInput > 0 || moveInput < 0) {
+                animator.SetInteger(animationState, (int)CharStates.twoLegWalk);
+            } else if (jumpInput > 0) {
+                animator.SetInteger(animationState, (int)CharStates.twoLegHop); 
+            } else if (jumpInput < 0) {
+                // needs work
+                animator.SetInteger(animationState, (int)CharStates.twoLegCrouch); 
+            } else {
+                animator.SetInteger(animationState, (int)CharStates.twoLegIdle);
+            }
+        }
+    }
+
     // MAINTAINS TIMERS
     void Timers()
     {
@@ -232,6 +288,8 @@ public class LightPlayerController : MonoBehaviour
         return (player.GetNumFeet() > 1) && (numJumps < 2);
     }
     #endregion CHECKS
+
+
 
 
     #region TRIGGERS

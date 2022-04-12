@@ -39,7 +39,10 @@ public class FadeZoomEffect : MonoBehaviour
         
         rb.constraints = RigidbodyConstraints.FreezePositionX | 
                          RigidbodyConstraints.FreezePositionY |
-                         RigidbodyConstraints.FreezePositionZ;
+                         RigidbodyConstraints.FreezePositionZ |
+                         RigidbodyConstraints.FreezeRotationX |
+                         RigidbodyConstraints.FreezeRotationY |
+                         RigidbodyConstraints.FreezeRotationZ;
         
         animator.enabled = false;
         if (fadeToBlack)
@@ -72,9 +75,10 @@ public class FadeZoomEffect : MonoBehaviour
             
             rb.constraints = RigidbodyConstraints.None;
             rb.constraints = RigidbodyConstraints.FreezePositionZ |
+                             RigidbodyConstraints.FreezeRotationX |
+                             RigidbodyConstraints.FreezeRotationY |
                              RigidbodyConstraints.FreezeRotationZ;
 
-            animator.enabled = true;
             yield break;
         }
     }

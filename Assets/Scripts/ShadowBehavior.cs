@@ -14,10 +14,10 @@ public class ShadowBehavior : MonoBehaviour
 
     void Start()
     {
-        this.enabled = false;
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         groundLayer = LayerMask.GetMask("Ground");
+        this.enabled = false;
     }
 
     void FixedUpdate()

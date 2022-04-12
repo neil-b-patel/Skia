@@ -79,7 +79,7 @@ public class FadeZoomEffect : MonoBehaviour
                              RigidbodyConstraints.FreezeRotationX |
                              RigidbodyConstraints.FreezeRotationY |
                              RigidbodyConstraints.FreezeRotationZ;
-
+            animator.enabled = true;
             yield break;
         }
     }

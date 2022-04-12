@@ -1261,7 +1261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 319b432aba51e417d957a645adb809c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 1806645345}
   oneLeg: {fileID: -557537184, guid: 45cc8e3173519b6439822c1197b4b02f, type: 3}
   twoLeg: {fileID: 693855087, guid: fe40b14f505207645903727e03d3c557, type: 3}
 --- !u!1 &1895072586
@@ -1310,7 +1309,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1752136, y: 1}
+    m_SensorSize: {x: 1.9786326, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

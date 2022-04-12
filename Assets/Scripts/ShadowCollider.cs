@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class ShadowCollider : MonoBehaviour
 {
-    GameObject varGameObject = GameObject.Find("Light Player");
-
-    // 1
     void OnTriggerEnter(Collider other)
     {
         if (other.name == "Light Player")

@@ -1079,6 +1079,7 @@ GameObject:
   - component: {fileID: 1806645346}
   - component: {fileID: 1806645347}
   - component: {fileID: 1806645348}
+  - component: {fileID: 1806645349}
   m_Layer: 0
   m_Name: Light Player
   m_TagString: Untagged
@@ -1228,6 +1229,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneLeg: {fileID: -557537184, guid: 45cc8e3173519b6439822c1197b4b02f, type: 3}
   twoLeg: {fileID: 693855087, guid: fe40b14f505207645903727e03d3c557, type: 3}
+--- !u!114 &1806645349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806645340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69fc5a9e87124f5da2541def1fc6263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1500
 --- !u!1 &1895072586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1288,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.8726496, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

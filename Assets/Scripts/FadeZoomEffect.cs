@@ -13,6 +13,7 @@ public class FadeZoomEffect : MonoBehaviour
     private CinemachineVirtualCamera vcam;
     private Rigidbody rb;
 
+    public Animator animator;
     void Start()
     {
         vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
@@ -40,6 +41,7 @@ public class FadeZoomEffect : MonoBehaviour
                          RigidbodyConstraints.FreezePositionY |
                          RigidbodyConstraints.FreezePositionZ;
         
+        animator.enabled = false;
         if (fadeToBlack)
         {
             while (objectColor.a > 0)
@@ -72,7 +74,7 @@ public class FadeZoomEffect : MonoBehaviour
             rb.constraints = RigidbodyConstraints.FreezePositionZ |
                              RigidbodyConstraints.FreezeRotationZ;
 
-
+            animator.enabled = true;
             yield break;
         }
     }

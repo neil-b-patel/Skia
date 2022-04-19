@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Level01.unity
     guid: d30fbee988f498842a6e22beea9f1786
   - enabled: 1
-    path: Assets/Scenes/Level01 (New).unity
+    path: Assets/Scenes/Building Scene.unity
     guid: f5caabbd8aa316245ac70ff2953240fe
   - enabled: 1
     path: Assets/Scenes/Platformer.unity

@@ -10,11 +10,12 @@ public class LightPlayerController : MonoBehaviour
         noLegIdle = 1,
         rolling = 2,
         oneLegIdle = 3,
-        oneLegHop = 4,
-        twoLegIdle = 5,
-        twoLegWalk = 6,
-        twoLegHop = 7,
-        twoLegCrouch = 8
+        oneLegWalk = 4,
+        oneLegHop = 5,
+        twoLegIdle = 6,
+        twoLegWalk = 7,
+        twoLegHop = 8,
+        twoLegCrouch = 9
     }
 
     #endregion
@@ -210,8 +211,7 @@ public class LightPlayerController : MonoBehaviour
         } else if (CanJump() == true && CanDoubleJump() == false) {
             // need to add crouch
             if (moveInput > 0 || moveInput < 0) {
-                // replace animation
-                animator.SetInteger(animationState, (int)CharStates.oneLegHop);
+                animator.SetInteger(animationState, (int)CharStates.oneLegWalk);
             } else if (jumpInput > 0) {
                 animator.SetInteger(animationState, (int)CharStates.oneLegHop); 
             } else {

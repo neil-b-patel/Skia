@@ -296,7 +296,7 @@ public class LightPlayerController : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         string parentName = collider.transform.parent.name;
-
+        Debug.Log(parentName);
         player.OnItemPickup(collider, parentName);
     }
     #endregion

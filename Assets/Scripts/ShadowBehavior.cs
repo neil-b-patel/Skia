@@ -7,10 +7,8 @@ public class ShadowBehavior : MonoBehaviour
 
     private Rigidbody rb;
     private Collider col;
-
     private Vector3 movement;
     private LayerMask groundLayer;
-
 
     void Start()
     {

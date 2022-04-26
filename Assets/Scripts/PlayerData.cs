@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public int numFeet = 0;
-    public int numEyes = 0;
-    public float[] position = new float[] {0f, 0f, 0f};
-    public int numItems = 0;
-    public List<string> items = new List<string>();
+    public int numFeet;
+    public int numEyes;
+    public float[] position;
+    public int numItems;
+    public List<string> items;
 
 
     public void SaveData()
@@ -31,20 +31,14 @@ public class PlayerData : MonoBehaviour
 
     public void LoadData()
     {
-        numFeet = 0;
-        numEyes = 0;
-        position = new float[] { 0f, 0f, 0f };
-        numItems = 0;
-        items = new List<string>();
-
-        List<string> keys = new List<string> {
-            "numFeet",
+        List<string> keys = new List<string> { 
+            "numFeet", 
             "numEyes",
-            "position.x",
-            "position.y",
-            "position.z",
+            "position.x", 
+            "position.y", 
+            "position.z", 
             "numItems"
-        };
+        }; 
 
         if (LoadDataExists(keys, items))
         {
@@ -68,6 +62,35 @@ public class PlayerData : MonoBehaviour
         {
             Debug.LogWarning("SAVE DATA CORRUPTED!");
         }
+
+        //int _numItems = LoadInt("numItems", numItems);
+        //List<string> _items = new List<string>();
+
+        //int diffInItems = _numItems - numItems;
+
+        //if (diffInItems > 0)
+        //{
+        //    for (int i = 0; i < numItems; i++)
+        //    {
+        //        string item = LoadString("item" + i, items[i]);
+        //        items.Add(item);
+        //    }
+        //    for (int i = numItems; i <_numItems; i++)
+        //    {
+        //        string item = LoadString("item" + i, "");
+        //        if (item != "")
+        //        {
+        //            items.Add(item);
+        //        }
+        //    }
+        //    numItems = _numItems;
+        //    items = _items;
+        //}
+
+        //Debug.Log("NUM FEET: " + numFeet);
+        //Debug.Log("NUM EYES: " + numEyes);
+        //Debug.Log("POSITION: " + position);
+        //Debug.Log("ITEMS: " + items);
 
         Debug.Log("LOAD GAME!");
     }

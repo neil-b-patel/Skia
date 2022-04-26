@@ -5,8 +5,8 @@ public class LightPlayerController : MonoBehaviour
     #region ANIMATION STATES
     Animator animator;
     string animationState = "AnimationState";
-    enum CharStates
-    {
+    enum CharStates 
+    {   
         noLegIdle = 1,
         rolling = 2,
         oneLegIdle = 3,
@@ -17,13 +17,13 @@ public class LightPlayerController : MonoBehaviour
         twoLegHop = 8,
         twoLegCrouch = 9
     }
-    #endregion
 
+    #endregion
 
     #region RUN VARS
     private float moveInput;
     private float jumpInput;
-    private float moveSpeed = 27f;
+    private float moveSpeed = 25f;
     private float acceleration = 20f;
     private float decceleration = 25f;
     private float velocityPower = 0.9f;
@@ -33,7 +33,7 @@ public class LightPlayerController : MonoBehaviour
 
 
     #region JUMP VARS
-    private float jumpForce = 22f;
+    private float jumpForce = 30f;
     private float jumpCutMultiplier = 0.5f;
     private float jumpCoyoteTime = 0.15f;
     private float jumpBufferTime = 0.1f;
@@ -46,6 +46,7 @@ public class LightPlayerController : MonoBehaviour
 
     #region UNITY VARS
     private PlayerManager player;
+    private ProgressManager progressManager;
     private Rigidbody rb;
     private Collider col;
     private LayerMask groundLayer;
@@ -57,6 +58,7 @@ public class LightPlayerController : MonoBehaviour
         #region LOAD UNITY VARS
         animator = GetComponent<Animator>();
         player = FindObjectOfType<PlayerManager>();
+        progressManager = FindObjectOfType<ProgressManager>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         groundLayer = LayerMask.GetMask("Ground");
@@ -159,22 +161,12 @@ public class LightPlayerController : MonoBehaviour
 
     void Jump()
     {
-        float adjustedJumpForce = 0f;
-
-        if (numJumps == 0)
-        {
-            adjustedJumpForce = jumpForce;
-        }
-        else
-        {
-            adjustedJumpForce = jumpForce * 0.65f;
-        }
-
         lastJumpTime = 0f;
         lastGroundedTime = 0f;
         numJumps += 1;
         isJumping = true;
 
+        float adjustedJumpForce = jumpForce;
         if (IsFalling())
         {
             adjustedJumpForce -= rb.velocity.y;
@@ -298,31 +290,14 @@ public class LightPlayerController : MonoBehaviour
     #endregion CHECKS
 
 
+
+
     #region TRIGGERS
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("CanBePickedUp"))
-        {
-            string parentName = collider.transform.parent.name;
-            player.OnItemPickup(collider, parentName);
-        }
-        if (collider.CompareTag("Light"))
-        {
-            player.OnLightEnter(collider);
-        }
-        if (collider.CompareTag("Water"))
-        {
-            player.OnWaterEnter(collider);
-        }
+        string parentName = collider.transform.parent.name;
 
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Light"))
-        {
-            player.OnLightExit(collider);
-        }
+        player.OnItemPickup(collider, parentName);
     }
     #endregion
 

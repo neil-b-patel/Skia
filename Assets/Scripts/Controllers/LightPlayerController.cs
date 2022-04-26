@@ -310,7 +310,7 @@ public class LightPlayerController : MonoBehaviour
         {
             player.OnLightEnter(collider);
         }
-        if (collider.CompareTag("Water"))
+        if (collider.CompareTag("Abyss"))
         {
             player.OnWaterEnter(collider);
         }

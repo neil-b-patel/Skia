@@ -6,8 +6,11 @@ public class ShadowCollider : MonoBehaviour
     {
         if (other.name == "Light Player")
         {
-            other.GetComponent<ShadowPlayerController>().enabled = true;
+            bool direction;
+            direction = other.GetComponent<LightPlayerController>().GetDirectionToFace();
             other.GetComponent<LightPlayerController>().enabled = false;
+            other.GetComponent<ShadowPlayerController>().enabled = true;
+            other.GetComponent<ShadowPlayerController>().SetDirectionToFace(direction);
         }
     }
 
@@ -15,8 +18,11 @@ public class ShadowCollider : MonoBehaviour
     {
         if (other.name == "Light Player")
         {
+            bool direction;
+            direction = other.GetComponent<ShadowPlayerController>().GetDirectionToFace();
             other.GetComponent<ShadowPlayerController>().enabled = false;
             other.GetComponent<LightPlayerController>().enabled = true;
+            other.GetComponent<LightPlayerController>().SetDirectionToFace(direction);
         }
     }
 }

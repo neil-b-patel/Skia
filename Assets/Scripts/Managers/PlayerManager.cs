@@ -71,6 +71,11 @@ public class PlayerManager : MonoBehaviour
     {
         playerData.items.Add(item);
     }
+
+    public void SetMusic(bool isLightPlayer)
+    {
+        progressManager.SetMusic(isLightPlayer);
+    }
     #endregion
 
     public void OnItemPickup(Collider item, string parentName)

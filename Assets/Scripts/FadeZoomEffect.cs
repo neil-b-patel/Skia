@@ -5,10 +5,9 @@ using Cinemachine;
 
 public class FadeZoomEffect : MonoBehaviour
 {
-    int startCamZoom = 18;
-    int endCamZoom = 10;
-    float fadeSpeed = 0.05f;
-    float lensAdjust = 0.75f;
+    int startCamZoom = 11;
+    float fadeSpeed = 0.1f;
+    float lensAdjust = 0.45f;
     bool fadeToBlack = true;
 
     private CinemachineVirtualCamera vcam;
@@ -49,27 +48,26 @@ public class FadeZoomEffect : MonoBehaviour
         animator.enabled = false;
         if (fadeToBlack)
         {
-            while (objectColor.a > 0 || vcam.m_Lens.OrthographicSize > endCamZoom)
+            while (objectColor.a > 0 && vcam.m_Lens.OrthographicSize != 6)
             {
                 if(objectColor.a < 80) {
                     fadeSpeed = 0.15f; 
                 }
 
                 if(objectColor.a < 100) {
-                    lensAdjust = 1.25f;
+                    lensAdjust = .80f;
                 }
 
-                if (objectColor.a > 0)
-                {
-                    fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
-                    objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-                    GetComponent<Image>().color = objectColor;
-                }
+                fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
 
-                if (vcam.m_Lens.OrthographicSize > endCamZoom) 
+                if (vcam.m_Lens.OrthographicSize > 6) 
                 {
                     vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - (lensAdjust * Time.deltaTime);
                 }
+                
+                objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
+                
+                GetComponent<Image>().color = objectColor;
 
                 yield return null;
             }

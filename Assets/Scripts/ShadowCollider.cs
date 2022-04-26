@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShadowCollider : MonoBehaviour
@@ -6,7 +8,7 @@ public class ShadowCollider : MonoBehaviour
     {
         if (other.name == "Light Player")
         {
-            other.GetComponent<ShadowPlayerController>().enabled = true;
+            other.GetComponent<ShadowBehavior>().enabled = true;
             other.GetComponent<LightPlayerController>().enabled = false;
         }
     }
@@ -15,7 +17,7 @@ public class ShadowCollider : MonoBehaviour
     {
         if (other.name == "Light Player")
         {
-            other.GetComponent<ShadowPlayerController>().enabled = false;
+            other.GetComponent<ShadowBehavior>().enabled = false;
             other.GetComponent<LightPlayerController>().enabled = true;
         }
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
     SceneBehavior sceneBehavior;
     PlayerData playerData;
@@ -10,23 +10,23 @@ public class MenuManager : MonoBehaviour
     {
         sceneBehavior = FindObjectOfType<SceneBehavior>();
         playerData = FindObjectOfType<PlayerData>();
-        progressManager = FindObjectOfType<ProgressManager>();
     }
 
-    public void UnloadMenu()
+    public void NewGame()
     {
-        sceneBehavior.UnloadMenu(unpauseBtnPressed: true);
+        playerData.ResetData();
+        StartGame();
     }
 
-    public void SaveGame()
+    public void StartGame()
     {
-        playerData.SaveData();
+        sceneBehavior.StartFromGameOver();
     }
 
     public void LoadGame()
     {
         playerData.LoadData();
-        progressManager.CheckProgress();
+        StartGame();
     }
 
     public void QuitGame()

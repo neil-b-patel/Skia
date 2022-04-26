@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    PlayerData playerData;
+    SceneBehavior sceneBehavior;
     ProgressManager progressManager;
+    PlayerData playerData;
 
     void Awake()
     {
-        playerData = FindObjectOfType<PlayerData>();
+        sceneBehavior = FindObjectOfType<SceneBehavior>();
         progressManager = FindObjectOfType<ProgressManager>();
+        playerData = FindObjectOfType<PlayerData>();
     }
 
     #region GETTERS
@@ -73,28 +75,41 @@ public class PlayerManager : MonoBehaviour
 
     public void OnItemPickup(Collider item, string parentName)
     {
-        if (item.CompareTag("CanBePickedUp"))
+        switch (parentName)
         {
-            switch (parentName)
-            {
-                case "Feet":
-                    SetNumFeet(GetNumFeet() + 1);
+            case "Feet":
+                SetNumFeet(GetNumFeet() + 1);
 
-                    break;
-                case "Eyes":
-                    SetNumEyes(GetNumEyes() + 1);
-                    break;
-            }
-
-            AddItem(item.name);
-            SetPosition(transform.position);
-            
-            progressManager.SetMusic();
-
-            Destroy(item.gameObject);
-
-            progressManager.EvolvePlayer();
+                break;
+            case "Eyes":
+                SetNumEyes(GetNumEyes() + 1);
+                break;
         }
+
+        AddItem(item.name);
+        SetPosition(transform.position);
+            
+        progressManager.SetMusic();
+
+        Destroy(item.gameObject);
+
+        progressManager.EvolvePlayer();
     }
 
+    public void OnLightEnter(Collider light)
+    {
+        GetComponentInChildren<ShadowPlayerController>().enabled = true;
+        GetComponentInChildren<LightPlayerController>().enabled = false;
+    }
+
+    public void OnLightExit(Collider light)
+    {
+        GetComponentInChildren<ShadowPlayerController>().enabled = false;
+        GetComponentInChildren<LightPlayerController>().enabled = true;
+    }
+
+    public void OnWaterEnter(Collider water)
+    {
+        sceneBehavior.GameOver();
+    }
 }

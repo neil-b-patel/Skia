@@ -7,6 +7,8 @@ TagManager:
   - CanBePickedUp
   - Foot
   - Eye
+  - Light
+  - Water
   layers:
   - Default
   - TransparentFX

@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShadowPlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float movementSpeed = 1750f;
+
+    private Rigidbody rb;
+    private Vector3 movement;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
+        this.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        movement.Normalize();
+        rb.velocity = movement * movementSpeed * Time.deltaTime;
     }
 }

@@ -14,16 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Building Scene.unity
     guid: f5caabbd8aa316245ac70ff2953240fe
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: 06e869c2eb5eb442baebdfcb24b93c64
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Platformer.unity
     guid: 5665a6378a5aa094684dce15930ff7a5
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: c95198b89290eba4a9be8e820c30f65d
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 6890fe143aa6b7f428d7ffd72ea4f2e0
   m_configObjects: {}

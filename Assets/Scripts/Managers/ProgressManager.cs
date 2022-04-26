@@ -1,14 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ProgressManager : MonoBehaviour
 {
-    SceneBehavior sceneBehavior;
-    PlayerData playerData;
-    AudioManager audioManager;
-    FadeZoomEffect fadeZoomEffect;
-    LightPlayerEvolution lightPlayerEvolution;
+    private PlayerData playerData;
+    private FadeZoomEffect fadeZoomEffect;
+    private LightPlayerEvolution lightPlayerEvolution;
 
-    void Start()
+    void Awake()
     {
         playerData = FindObjectOfType<PlayerData>();
     }
@@ -31,31 +32,27 @@ public class ProgressManager : MonoBehaviour
 
     public void SetMusic()
     {
-        audioManager = FindObjectOfType<AudioManager>();
-
-        audioManager.StopAll();
-
         switch(playerData.items.Count)
         {
             case 0:
-                //audioManager.Stop("TitleScreen", fade: true);
-                audioManager.Play("Dark");
+                //FindObjectOfType<AudioManager>().Stop("TitleScreen", fade: true);
+                FindObjectOfType<AudioManager>().Play("Dark");
                 break;
             case 1:
-                //audioManager.Stop("Dark");
-                audioManager.Play("Spooky");
+                FindObjectOfType<AudioManager>().Stop("Dark");
+                FindObjectOfType<AudioManager>().Play("Spooky");
                 break;
             case 2:
-                //audioManager.Stop("Spooky");
-                audioManager.Play("Arabian");
+                FindObjectOfType<AudioManager>().Stop("Spooky");
+                FindObjectOfType<AudioManager>().Play("Arabian");
                 break;
             case 3:
-                //audioManager.Stop("Arabian");
-                audioManager.Play("Journey");
+                FindObjectOfType<AudioManager>().Stop("Arabian");
+                FindObjectOfType<AudioManager>().Play("Journey");
                 break;
             case 4:
-                //audioManager.Stop("Journey");
-                audioManager.Play("TitleScreen");
+                FindObjectOfType<AudioManager>().Stop("Journey");
+                FindObjectOfType<AudioManager>().Play("TitleScreen");
                 break;
         }
     }
@@ -96,11 +93,5 @@ public class ProgressManager : MonoBehaviour
     public void EvolvePlayer()
     {
         lightPlayerEvolution.EvolvePlayer();
-    }
-
-    public void GameWin()
-    {
-        sceneBehavior = FindObjectOfType<SceneBehavior>();
-        sceneBehavior.GameWin();
     }
 }

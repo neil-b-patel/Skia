@@ -4,17 +4,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneBehavior : MonoBehaviour
 {
+    ProgressManager progressManager;
+
     public enum Scenes
     {
         Core,
         Title,
         Level01,
         Platformer,
-        Menu
+        Menu,
+        GameOver
     }
 
-    private bool onTitle = true;
-    private bool menuLoaded = false;
+    bool onTitle = true;
+    bool menuLoaded = false;
 
     void Start()
     {
@@ -61,9 +64,8 @@ public class SceneBehavior : MonoBehaviour
     {
         SceneManager.LoadSceneAsync((int)Scenes.Level01, LoadSceneMode.Additive);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)Scenes.Platformer, LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync((int)Scenes.Title);
 
-        FindObjectOfType<AudioManager>().Stop("TitleScreen");
+        //FindObjectOfType<AudioManager>().Stop("TitleScreen");
 
         onTitle = false;
 
@@ -81,15 +83,31 @@ public class SceneBehavior : MonoBehaviour
         Application.Quit();
     }
 
-    //public Scene[] GetScenes()
-    //{
-    //    Scene[] scenes = new Scene[SceneManager.sceneCount]; 
+    public void GameOver()
+    {
+        SceneManager.UnloadSceneAsync((int)Scenes.Level01);
+        SceneManager.UnloadSceneAsync((int)Scenes.Platformer);
+        SceneManager.LoadSceneAsync((int)Scenes.GameOver, LoadSceneMode.Additive);
 
-    //    for (int i = 0;  i < SceneManager.sceneCount; i++)
-    //    {
-    //        scenes[i] = SceneManager.GetSceneAt(i);
-    //    }
+        Debug.Log("GAME OVER!");
+    }
 
-    //    return scenes; 
-    //}
+    public void GameWin()
+    {
+        Debug.Log("YOU WON!");
+    }
+
+    public void StartFromTitle()
+    {
+        progressManager = FindObjectOfType<ProgressManager>();
+        StartCoroutine(StartGame(progressManager.CheckProgress));
+        SceneManager.UnloadSceneAsync((int)Scenes.Title);
+    }
+
+    public void StartFromGameOver()
+    {
+        progressManager = FindObjectOfType<ProgressManager>();
+        StartCoroutine(StartGame(progressManager.CheckProgress));
+        SceneManager.UnloadSceneAsync((int)Scenes.GameOver);
+    }
 }

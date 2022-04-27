@@ -29,34 +29,41 @@ public class ProgressManager : MonoBehaviour
         }
     }
 
-    public void SetMusic()
+    public void SetMusic(bool isLightPlayer = true)
     {
         audioManager = FindObjectOfType<AudioManager>();
 
         audioManager.StopAll();
 
-        switch(playerData.items.Count)
+        if (isLightPlayer)
         {
-            case 0:
-                //audioManager.Stop("TitleScreen", fade: true);
-                audioManager.Play("Dark");
-                break;
-            case 1:
-                //audioManager.Stop("Dark");
-                audioManager.Play("Spooky");
-                break;
-            case 2:
-                //audioManager.Stop("Spooky");
-                audioManager.Play("Arabian");
-                break;
-            case 3:
-                //audioManager.Stop("Arabian");
-                audioManager.Play("Journey");
-                break;
-            case 4:
-                //audioManager.Stop("Journey");
-                audioManager.Play("TitleScreen");
-                break;
+            switch (playerData.numFeet)
+            {
+                case 0:
+                    audioManager.Play("Arabian");
+                    break;
+                case 1:
+                    audioManager.Play("Journey");
+                    break;
+                case 2:
+                    audioManager.Play("TitleScreen");
+                    break;
+            }
+        }
+        else
+        {
+            switch (playerData.numFeet)
+            {
+                case 0:
+                    audioManager.Play("Spooky");
+                    break;
+                case 1:
+                    audioManager.Play("Spooky");
+                    break;
+                case 2:
+                    audioManager.Play("Dark");
+                    break;
+            }
         }
     }
 

@@ -63,6 +63,14 @@ public class LightPlayerController : MonoBehaviour
         #endregion
 
         player.SetPosition(Vector3.zero);
+
+        #region MUSIC
+        #endregion
+    }
+
+    void OnEnable()
+    {
+        player.SetMusic(isLightPlayer: true);
     }
 
     void Update()
@@ -167,7 +175,7 @@ public class LightPlayerController : MonoBehaviour
         }
         else
         {
-            adjustedJumpForce = jumpForce * 0.65f;
+            adjustedJumpForce = jumpForce * 0.75f;
         }
 
         lastJumpTime = 0f;
@@ -310,7 +318,7 @@ public class LightPlayerController : MonoBehaviour
         {
             player.OnLightEnter(collider);
         }
-        if (collider.CompareTag("Water"))
+        if (collider.CompareTag("Abyss"))
         {
             player.OnWaterEnter(collider);
         }
@@ -326,4 +334,19 @@ public class LightPlayerController : MonoBehaviour
     }
     #endregion
 
+
+    #region GETTERS
+    public bool GetDirectionToFace()
+    {
+        return isFacingRight;
+    }
+    #endregion
+
+
+    #region SETTERS
+    public void SetDirectionToFace(bool direction)
+    {
+        isFacingRight = direction;
+    }
+    #endregion
 }

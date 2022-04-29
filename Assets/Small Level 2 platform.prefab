@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1693962560014555886}
   - component: {fileID: 113752827967474300}
   - component: {fileID: 2412137756159177129}
-  - component: {fileID: 8724743467668248513}
   - component: {fileID: 4470892803056219472}
   m_Layer: 6
   m_Name: Small Level 2 platform
@@ -85,18 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8724743467668248513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6282342830356546557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1da4dc3109d5e415ba778575c44caa36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4470892803056219472
 BoxCollider:
   m_ObjectHideFlags: 0

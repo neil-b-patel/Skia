@@ -11,15 +11,15 @@ public class FadeZoomEffect : MonoBehaviour
     float lensAdjust = 0.75f;
     bool fadeToBlack = true;
 
-    private CinemachineVirtualCamera vcam;
-    private Rigidbody rb;
-
+    public CinemachineVirtualCamera vcam;
     public Animator animator;
+    public Rigidbody rb;
+
 
     void Start()
     {
-        vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
-        rb = GameObject.Find("Light Player").GetComponent<Rigidbody>();
+        //vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        //rb = GameObject.Find("Light Player").GetComponent<Rigidbody>();
     }
 
     //notes: have camera follow turned off at start,

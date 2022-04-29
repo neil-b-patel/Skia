@@ -2,16 +2,13 @@ using UnityEngine;
 
 public class ProgressManager : MonoBehaviour
 {
-    SceneBehavior sceneBehavior;
-    PlayerData playerData;
-    AudioManager audioManager;
     FadeZoomEffect fadeZoomEffect;
     LightPlayerEvolution lightPlayerEvolution;
 
-    void Start()
-    {
-        playerData = FindObjectOfType<PlayerData>();
-    }
+    public SceneBehavior sceneBehavior;
+    public AudioManager audioManager;
+    public PlayerData playerData;
+ 
 
     public void CheckProgress()
     {
@@ -31,7 +28,7 @@ public class ProgressManager : MonoBehaviour
 
     public void SetMusic(bool isLightPlayer = true)
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        //audioManager = FindObjectOfType<AudioManager>();
 
         audioManager.StopAll();
 
@@ -107,7 +104,7 @@ public class ProgressManager : MonoBehaviour
 
     public void GameWin()
     {
-        sceneBehavior = FindObjectOfType<SceneBehavior>();
+        //sceneBehavior = FindObjectOfType<SceneBehavior>();
         sceneBehavior.GameWin();
     }
 }

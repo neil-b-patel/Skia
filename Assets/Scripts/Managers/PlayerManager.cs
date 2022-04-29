@@ -1,11 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
+    bool inLight = false;
+
     SceneBehavior sceneBehavior;
     ProgressManager progressManager;
     PlayerData playerData;
+
+    public Sprite lightSprite;
+    public Sprite shadowSprite;
+    public CinemachineVirtualCamera vcam;
 
     void Awake()
     {
@@ -76,6 +83,11 @@ public class PlayerManager : MonoBehaviour
     {
         progressManager.SetMusic(isLightPlayer);
     }
+
+    public void SetInLight(bool onTriggerStay)
+    {
+        inLight = onTriggerStay;
+    }
     #endregion
 
     public void OnItemPickup(Collider item, string parentName)
@@ -101,16 +113,57 @@ public class PlayerManager : MonoBehaviour
         progressManager.EvolvePlayer();
     }
 
-    public void OnLightEnter(Collider light)
+    public void OnLightEnter(bool direction, Vector3 position)
     {
-        GetComponentInChildren<ShadowPlayerController>().enabled = true;
-        GetComponentInChildren<LightPlayerController>().enabled = false;
+        inLight = true;
+
+        //GameObject shadowPlayer = transform.GetChild(1).gameObject;
+        //shadowPlayer.SetActive(true);
+        //shadowPlayer.GetComponent<ShadowPlayerController>().SetDirectionToFace(direction);
+        //shadowPlayer.GetComponent<ShadowPlayerController>().SetPosition(position);
+
+        GameObject player = transform.GetChild(0).gameObject;
+        ShadowPlayerController shadowPlayer = player.GetComponent<ShadowPlayerController>();
+        LightPlayerController lightPlayer = player.GetComponent<LightPlayerController>();
+
+        player.GetComponent<SpriteRenderer>().sprite = shadowSprite;
+        player.GetComponent<Animator>().enabled = false;
+        shadowPlayer.enabled = true;
+        shadowPlayer.SetDirectionToFace(direction);
+        shadowPlayer.SetPosition(position);
+
+        vcam.Follow = player.transform;
+
+        lightPlayer.enabled = false;
+
+        //GetComponentInChildren<ShadowPlayerController>().gameObject.SetActive(true);
+        //GetComponentInChildren<LightPlayerController>().gameObject.SetActive(false);
     }
 
-    public void OnLightExit(Collider light)
+    public void OnLightExit(bool direction, Vector3 position)
     {
-        GetComponentInChildren<ShadowPlayerController>().enabled = false;
-        GetComponentInChildren<LightPlayerController>().enabled = true;
+        inLight = false;
+
+        //GameObject lightPlayer = transform.GetChild(0).gameObject;
+        //GameObject shadowPlayer = transform.GetChild(1).gameObject;
+
+        GameObject player = transform.GetChild(0).gameObject;
+        ShadowPlayerController shadowPlayer = player.GetComponent<ShadowPlayerController>();
+        LightPlayerController lightPlayer = player.GetComponent<LightPlayerController>();
+
+        player.GetComponent<SpriteRenderer>().sprite = lightSprite;
+        player.GetComponent<Animator>().enabled = true;
+        lightPlayer.enabled = true;
+        lightPlayer.SetDirectionToFace(direction);
+        lightPlayer.SetPosition(position);
+
+        vcam.Follow = lightPlayer.transform;
+
+        shadowPlayer.enabled = false;
+
+        //GetComponentInChildren<ShadowPlayerController>().gameObject.SetActive(false);
+        //GetComponentInChildren<LightPlayerController>().SetDirectionToFace(direction);
+        //GetComponentInChildren<LightPlayerController>().gameObject.SetActive(true);
     }
 
     public void OnWaterEnter(Collider water)

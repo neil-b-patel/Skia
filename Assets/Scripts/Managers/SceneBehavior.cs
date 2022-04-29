@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneBehavior : MonoBehaviour
 {
-    ProgressManager progressManager;
+    public ProgressManager progressManager;
+    public AudioManager audioManager;
 
     public enum Scenes
     {
@@ -21,7 +22,7 @@ public class SceneBehavior : MonoBehaviour
 
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("TitleScreen");
+        audioManager.Play("TitleScreen");
 
         SceneManager.LoadScene((int)Scenes.Title, LoadSceneMode.Additive);
     }
@@ -65,8 +66,6 @@ public class SceneBehavior : MonoBehaviour
         SceneManager.LoadSceneAsync((int)Scenes.Level01, LoadSceneMode.Additive);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)Scenes.Platformer, LoadSceneMode.Additive);
 
-        //FindObjectOfType<AudioManager>().Stop("TitleScreen");
-
         onTitle = false;
 
         while (!asyncLoad.isDone)
@@ -99,14 +98,12 @@ public class SceneBehavior : MonoBehaviour
 
     public void StartFromTitle()
     {
-        progressManager = FindObjectOfType<ProgressManager>();
         StartCoroutine(StartGame(progressManager.CheckProgress));
         SceneManager.UnloadSceneAsync((int)Scenes.Title);
     }
 
     public void StartFromGameOver()
     {
-        progressManager = FindObjectOfType<ProgressManager>();
         StartCoroutine(StartGame(progressManager.CheckProgress));
         SceneManager.UnloadSceneAsync((int)Scenes.GameOver);
     }

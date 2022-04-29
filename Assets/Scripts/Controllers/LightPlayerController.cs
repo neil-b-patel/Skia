@@ -21,34 +21,34 @@ public class LightPlayerController : MonoBehaviour
 
 
     #region RUN VARS
-    private float moveInput;
-    private float jumpInput;
-    private float moveSpeed = 27f;
-    private float acceleration = 20f;
-    private float decceleration = 25f;
-    private float velocityPower = 0.9f;
-    private float defaultFriction = 0.2f;
-    private bool isFacingRight = true;
+    float moveInput;
+    float jumpInput;
+    float moveSpeed = 30f;
+    float acceleration = 20f;
+    float decceleration = 25f;
+    float velocityPower = 0.9f;
+    float defaultFriction = 0.2f;
+    bool isFacingRight = true;
     #endregion
 
 
     #region JUMP VARS
-    private float jumpForce = 22f;
-    private float jumpCutMultiplier = 0.5f;
-    private float jumpCoyoteTime = 0.15f;
-    private float jumpBufferTime = 0.1f;
-    private float lastGroundedTime = 0f;
-    private float lastJumpTime = 0f;
-    private bool isJumping = false;
-    private int numJumps = 0;
+    float jumpForce = 35f;
+    float jumpCutMultiplier = 0.5f;
+    float jumpCoyoteTime = 0.15f;
+    float jumpBufferTime = 0.1f;
+    float lastGroundedTime = 0f;
+    float lastJumpTime = 0f;
+    bool isJumping = false;
+    int numJumps = 0;
     #endregion
 
 
     #region UNITY VARS
-    private PlayerManager player;
-    private Rigidbody rb;
-    private Collider col;
-    private LayerMask groundLayer;
+    PlayerManager player;
+    Rigidbody rb;
+    Collider col;
+    LayerMask groundLayer;
     #endregion
 
 
@@ -56,7 +56,7 @@ public class LightPlayerController : MonoBehaviour
     {
         #region LOAD UNITY VARS
         animator = GetComponent<Animator>();
-        player = FindObjectOfType<PlayerManager>();
+        player = GetComponentInParent<PlayerManager>();
         rb = GetComponent<Rigidbody>();
         col = GetComponent<Collider>();
         groundLayer = LayerMask.GetMask("Ground");
@@ -316,20 +316,11 @@ public class LightPlayerController : MonoBehaviour
         }
         if (collider.CompareTag("Light"))
         {
-            player.OnLightEnter(collider);
+            player.OnLightEnter(GetDirectionToFace(), GetPosition());
         }
         if (collider.CompareTag("Abyss"))
         {
             player.OnWaterEnter(collider);
-        }
-
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.CompareTag("Light"))
-        {
-            player.OnLightExit(collider);
         }
     }
     #endregion
@@ -340,6 +331,10 @@ public class LightPlayerController : MonoBehaviour
     {
         return isFacingRight;
     }
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
     #endregion
 
 
@@ -347,6 +342,10 @@ public class LightPlayerController : MonoBehaviour
     public void SetDirectionToFace(bool direction)
     {
         isFacingRight = direction;
+    }
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
     }
     #endregion
 }

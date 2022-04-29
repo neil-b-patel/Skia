@@ -59,4 +59,31 @@ public class ShadowPlayerController : MonoBehaviour
     {
         return isFacingRight;
     }
+
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
+    void OnTriggerStay(Collider collider)
+    {
+        if (collider.CompareTag("Light"))
+        {
+            player.SetInLight(true);
+        }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        //Debug.Log("TRIGGER EXIT!");
+        if (collider.CompareTag("Light"))
+        {
+            player.OnLightExit(GetDirectionToFace(), GetPosition());
+        }
+    }
 }

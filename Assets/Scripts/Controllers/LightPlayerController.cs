@@ -63,7 +63,6 @@ public class LightPlayerController : MonoBehaviour
         #endregion
 
         player.SetPosition(Vector3.zero);
-
         #region MUSIC
         #endregion
     }
@@ -74,7 +73,7 @@ public class LightPlayerController : MonoBehaviour
     }
 
     void Update()
-    {
+    {   
         #region INPUT CHECKS
         moveInput = Input.GetAxisRaw("Horizontal");
         jumpInput = Input.GetAxisRaw("Vertical");

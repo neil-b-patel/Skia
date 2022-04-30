@@ -736,6 +736,7 @@ MonoBehaviour:
   animator: {fileID: 1806645347}
   rb: {fileID: 1806645344}
   dialogueRunner: {fileID: 1926998804}
+  dialogue: {fileID: 1926998805}
 --- !u!1 &1632233849
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc911e59bd32f6439e9f629e5582e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 1926998804}
 --- !u!95 &1806645347
 Animator:
   serializedVersion: 4
@@ -1339,9 +1341,14 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
   m_PrefabInstance: {fileID: 1926998803}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1926998805}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1926998805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2753718018764665327, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+  m_PrefabInstance: {fileID: 1926998803}
+  m_PrefabAsset: {fileID: 0}

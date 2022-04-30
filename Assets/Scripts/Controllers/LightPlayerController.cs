@@ -49,6 +49,7 @@ public class LightPlayerController : MonoBehaviour
     Rigidbody rb;
     Collider col;
     LayerMask groundLayer;
+    [SerializeField]Yarn.Unity.DialogueRunner dialogueRunner;
     #endregion
 
 
@@ -321,6 +322,10 @@ public class LightPlayerController : MonoBehaviour
         if (collider.CompareTag("Abyss"))
         {
             player.OnWaterEnter(collider);
+        }
+        if (collider.CompareTag("Daedalus"))
+        {
+            dialogueRunner.StartDialogue("Start");
         }
     }
     #endregion

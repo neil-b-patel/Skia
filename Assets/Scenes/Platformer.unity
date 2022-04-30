@@ -735,11 +735,8 @@ MonoBehaviour:
   vcam: {fileID: 1895072587}
   animator: {fileID: 1806645347}
   rb: {fileID: 1806645344}
-<<<<<<< HEAD
   dialogueRunner: {fileID: 1926998804}
   dialogue: {fileID: 1926998805}
-=======
->>>>>>> parent of 21a79071 (merged Dialogue)
 --- !u!1 &1632233849
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,10 +956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc911e59bd32f6439e9f629e5582e42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   dialogueRunner: {fileID: 1926998804}
-=======
->>>>>>> parent of 21a79071 (merged Dialogue)
 --- !u!95 &1806645347
 Animator:
   serializedVersion: 4

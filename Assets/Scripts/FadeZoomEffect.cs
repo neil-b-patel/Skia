@@ -14,8 +14,13 @@ public class FadeZoomEffect : MonoBehaviour
     public CinemachineVirtualCamera vcam;
     public Animator animator;
     public Rigidbody rb;
+<<<<<<< HEAD
     [SerializeField]Yarn.Unity.DialogueRunner dialogueRunner;
     public GameObject dialogue;
+=======
+
+
+>>>>>>> parent of 21a79071 (merged Dialogue)
     void Start()
     {
         //vcam = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
@@ -75,11 +80,15 @@ public class FadeZoomEffect : MonoBehaviour
             }
             
             Debug.Log("FADING DONE");
+<<<<<<< HEAD
             dialogueRunner.StartDialogue("Start");
             while(dialogueRunner.IsDialogueRunning == true) {
                 yield return null;        
             }
             dialogue.SetActive(false);
+=======
+            
+>>>>>>> parent of 21a79071 (merged Dialogue)
             rb.constraints = RigidbodyConstraints.None;
             rb.constraints = RigidbodyConstraints.FreezePositionZ |
                              RigidbodyConstraints.FreezeRotationX |

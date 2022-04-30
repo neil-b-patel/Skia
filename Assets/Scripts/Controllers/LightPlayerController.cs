@@ -50,7 +50,7 @@ public class LightPlayerController : MonoBehaviour
     Collider col;
     LayerMask groundLayer;
     #endregion
-    [SerializeField]Yarn.Unity.DialogueRunner dialogueRunner;
+
 
     void Start()
     {
@@ -63,6 +63,7 @@ public class LightPlayerController : MonoBehaviour
         #endregion
 
         player.SetPosition(Vector3.zero);
+
         #region MUSIC
         #endregion
     }
@@ -73,7 +74,7 @@ public class LightPlayerController : MonoBehaviour
     }
 
     void Update()
-    {   
+    {
         #region INPUT CHECKS
         moveInput = Input.GetAxisRaw("Horizontal");
         jumpInput = Input.GetAxisRaw("Vertical");
@@ -320,10 +321,6 @@ public class LightPlayerController : MonoBehaviour
         if (collider.CompareTag("Abyss"))
         {
             player.OnWaterEnter(collider);
-        }
-        if (collider.CompareTag("Daedalus"))
-        {
-            dialogueRunner.StartDialogue("Daedalus");
         }
     }
     #endregion

@@ -9,7 +9,6 @@ TagManager:
   - Eye
   - Light
   - Abyss
-  - Daedalus
   layers:
   - Default
   - TransparentFX

@@ -325,6 +325,20 @@ public class LightPlayerController : MonoBehaviour
         {
             dialogueRunner.StartDialogue("Daedalus");
         }
+        // could be done more efficiently
+        if(collider.CompareTag("Help")) 
+        {
+            dialogueRunner.StartDialogue("Light-Tutorial");
+        }
+        if(collider.CompareTag("Help2")) 
+        {   
+            Debug.Log("hello");
+            dialogueRunner.StartDialogue("OneLeg-Tutorial");
+        }
+        if(collider.CompareTag("Help3")) 
+        {
+            dialogueRunner.StartDialogue("TwoLeg-Tutorial");
+        }
     }
     #endregion
 

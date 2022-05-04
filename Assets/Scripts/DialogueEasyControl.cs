@@ -5,11 +5,9 @@ using UnityEngine.UI;
  
  public class DialogueEasyControl : MonoBehaviour
  {
-     public KeyCode key;
- 
      void Update()
      {
-        if (Input.GetKeyDown(key))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
          {
              GetComponent<Button>().onClick.Invoke();
          }

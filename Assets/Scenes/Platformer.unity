@@ -356,7 +356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6299bf2126223494aa2036946da1e16b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 13
 --- !u!1 &566431181
 GameObject:
   m_ObjectHideFlags: 3
@@ -1101,7 +1100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1486890682, guid: 8dc15362d698ba14d82fb04410bb08fd, type: 3}
+  m_Sprite: {fileID: 1313955673, guid: cda0cfc153f9c4ec394f1a0bf45f4311, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1332,6 +1331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bb503afac00584dbc07056b4ec305a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightSprite: {fileID: 1619797977, guid: 91f462a08682140d6ac0b8e2db638b51, type: 3}
+  lightSprite: {fileID: 1313955673, guid: cda0cfc153f9c4ec394f1a0bf45f4311, type: 3}
   shadowSprite: {fileID: -1735225358, guid: 1402702c224664c80aa7d1959e604013, type: 3}
   vcam: {fileID: 1895072587}

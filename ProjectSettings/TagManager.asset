@@ -10,6 +10,9 @@ TagManager:
   - Light
   - Abyss
   - Daedalus
+  - Help
+  - Help2
+  - Help3
   layers:
   - Default
   - TransparentFX

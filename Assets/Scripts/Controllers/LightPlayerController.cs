@@ -23,10 +23,10 @@ public class LightPlayerController : MonoBehaviour
     #region RUN VARS
     float moveInput;
     float jumpInput;
-    float moveSpeed = 30f;
-    float acceleration = 20f;
-    float decceleration = 25f;
-    float velocityPower = 0.9f;
+    float moveSpeed = 25f;
+    float acceleration = 15f;
+    float decceleration = 20f;
+    float velocityPower = 0.7f;
     float defaultFriction = 0.2f;
     bool isFacingRight = true;
     #endregion
@@ -324,6 +324,27 @@ public class LightPlayerController : MonoBehaviour
         if (collider.CompareTag("Daedalus"))
         {
             dialogueRunner.StartDialogue("Daedalus");
+        }
+        // could be done more efficiently
+        if(collider.CompareTag("Help")) 
+        {
+            dialogueRunner.StartDialogue("Light-Tutorial");
+        }
+        if(collider.CompareTag("Help2")) 
+        {   
+            if(CanJump()) {
+                collider.enabled = false;
+            } else {
+                dialogueRunner.StartDialogue("OneLeg-Tutorial");
+            }
+        }
+        if(collider.CompareTag("Help3")) 
+        {   
+            if(CanDoubleJump()) {
+                collider.enabled = false;
+            } else {
+                dialogueRunner.StartDialogue("TwoLeg-Tutorial");
+            }
         }
     }
     #endregion
